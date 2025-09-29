@@ -1,0 +1,7 @@
+ENDPOINT = "/practice-test-login/"
+USERNAME = "input#username"
+PASSWORD = "input#password"
+LOGIN_BUTTON = "button#submit"
+LOGIN_TEXT = "h1.post-title"
+LOGOUT_BUTTON = "//a[text()='Log out']"
+ERROR = "div#error"
