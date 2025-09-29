@@ -33,6 +33,10 @@ class ConfigManager:
         return os.path.join(self.root_dir, self.get("REPORT_PATH"))
 
     @property
+    def exports_path(self):
+        return os.path.join(self.root_dir, self.get("EXPORTS_PATH"))
+
+    @property
     def log_path(self):
         return os.path.join(self.root_dir, self.get("LOG_PATH"))
 
@@ -79,4 +83,3 @@ if __name__ == "__main__":
     print("HTML Report Path:", config.html_report_path)
     print("Trace Path:", config.trace_path)
     print("Network Calls Path:", config.network_calls_path)
-
