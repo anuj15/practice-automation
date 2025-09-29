@@ -84,7 +84,7 @@ class ReportManager:
         return decorator
 
     def attach_screenshots_on_each_step(self, request, step) -> None:
-        if not is_ci() and 'ui' in request.node.keywords:
+        if 'ui' in request.node.keywords:
             page = request.getfixturevalue("page")
             if not page:
                 return
@@ -180,3 +180,4 @@ class ReportManager:
             self.log.error(f"Allure command '{allure_cmd}' not found. Skipping report generation.")
         except subprocess.CalledProcessError as e:
             self.log.error(f"Allure report generation failed for dir: {self.config.allure_results_path} with error: {e}")
+
