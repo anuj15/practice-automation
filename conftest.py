@@ -1,17 +1,17 @@
 import os
 import shutil
 import time
-from typing import Generator, Any
-from features.utils.log_manager import LogManager
+
 import pytest
 from playwright.sync_api import sync_playwright
 from pytest_metadata.plugin import metadata_key
 
 from features.utils.config_manager import ConfigManager, is_ci
+from features.utils.log_manager import LogManager
 from features.utils.report_manager import ReportManager
 
-logger = LogManager().get_logger()
 obj_config = ConfigManager()
+logger = LogManager().get_logger()
 report_manager = ReportManager()
 bool_is_ci_env = is_ci()
 
@@ -33,12 +33,12 @@ def pytest_configure(config: pytest.Config):
 
 
 @pytest.hookimpl
-def pytest_html_report_title(report) -> None:
+def pytest_html_report_title(report):
     report.title = obj_config.get("PROJECT")
 
 
 @pytest.hookimpl
-def pytest_sessionstart(session: pytest.Session) -> None:
+def pytest_sessionstart(session: pytest.Session):
     network_call_logs = obj_config.network_calls_path
     if os.path.exists(network_call_logs):
         with open(network_call_logs, "w", encoding="utf-8") as f:
@@ -57,7 +57,7 @@ def pytest_sessionstart(session: pytest.Session) -> None:
 
 
 @pytest.fixture(scope="session")
-def browser() -> Generator[Any, Any, None]:
+def browser():
     browser_name = obj_config.get("BROWSER")
     headless = obj_config.get("HEADLESS")
     with sync_playwright() as p:
@@ -71,12 +71,12 @@ def browser() -> Generator[Any, Any, None]:
 
 
 @pytest.hookimpl
-def pytest_bdd_before_scenario(request, feature, scenario) -> None:
+def pytest_bdd_before_scenario(request, feature, scenario):
     report_manager.skip_scenarios_in_report(feature, scenario)
 
 
 @pytest.fixture(scope="function")
-def page(browser, request) -> Generator[Any, Any, None]:
+def page(browser, request):
     headless = obj_config.get("HEADLESS")
     int_wait_time = int(obj_config.get("STATIC_WAIT"))
     width = int(obj_config.get("VIEWPORT_WIDTH"))
@@ -111,28 +111,28 @@ def page(browser, request) -> Generator[Any, Any, None]:
             report_manager.attach_video_to_report()
 
 
-def allure_labels(suite: str, feature: str, story: str, *tags: str) -> Any:
+def allure_labels(suite, feature, story, *tags):
     return report_manager.add_labels_to_report(suite, feature, story, *tags)
 
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args) -> None:
+def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args):
     report_manager.intercept_network_calls(request)
     report_manager.attach_screenshots_on_each_step(request, step)
 
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception) -> None:
+def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     report_manager.attach_screenshot_on_failure(request, step)
 
 
 @pytest.hookimpl(hookwrapper=True)
-def pytest_runtest_makereport(item, call: pytest.CallInfo) -> Generator[None, Any, None]:
+def pytest_runtest_makereport(item, call: pytest.CallInfo):
     outcome = yield
     report_manager.attach_screenshot_to_report(outcome, call)
 
 
 @pytest.hookimpl
-def pytest_sessionfinish(session: pytest.Session, exitstatus) -> None:
+def pytest_sessionfinish(session: pytest.Session, exitstatus):
     report_manager.write_network_calls_to_html()
     report_manager.run_report()
