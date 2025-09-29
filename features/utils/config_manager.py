@@ -17,8 +17,9 @@ class ConfigManager:
 
     def get(self, key):
         try:
-            if is_ci():
-                return os.getenv(key)
+            env_value = os.getenv(key)
+            if env_value is not None:
+                return env_value
             return self.data.get(key)
         except KeyError as e:
             raise KeyError(f"Key {key} not found in configuration.") from e
@@ -78,3 +79,4 @@ if __name__ == "__main__":
     print("HTML Report Path:", config.html_report_path)
     print("Trace Path:", config.trace_path)
     print("Network Calls Path:", config.network_calls_path)
+
