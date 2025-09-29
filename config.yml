@@ -1,4 +1,4 @@
-HEADLESS: false
+HEADLESS: true
 STATIC_WAIT: 3
 RETRY_ATTEMPTS: 3
 BROWSER: chromium
@@ -18,3 +18,4 @@ ALLURE_REPORT_PATH: features/reports/allure-report
 HTML_REPORT_PATH: features/reports/html-report.html
 ALLURE_RESULTS_PATH: features/reports/allure-results
 NETWORK_CALLS_PATH: features/logs/network_calls.html
+
