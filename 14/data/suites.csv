@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"../feature_files/login.feature: validate login with invalid credentials","37","validate login with invalid credentials","features.tests.step_def_files","Mon Sep 29 14:54:32 UTC 2025","passed","Mon Sep 29 14:54:32 UTC 2025","","Login","",""
+"../feature_files/login.feature: validate login with valid credentials","390","validate login with valid credentials","features.tests.step_def_files","Mon Sep 29 14:54:32 UTC 2025","passed","Mon Sep 29 14:54:32 UTC 2025","","Login","",""
