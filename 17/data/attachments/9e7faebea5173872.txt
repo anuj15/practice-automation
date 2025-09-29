@@ -1,0 +1,12 @@
+2025-09-29 15:34:49,606 - New browser context created
+2025-09-29 15:34:49,628 - New page created in the browser context
+2025-09-29 15:34:49,632 - Navigating to https://practicetestautomation.com/practice-test-login/ (attempt 1/3)
+2025-09-29 15:34:51,244 - Element input#username is visible after waiting.
+2025-09-29 15:34:51,244 - Successfully loaded https://practicetestautomation.com/practice-test-login/
+2025-09-29 15:34:51,256 - Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='input#username'> is visible after waiting.
+2025-09-29 15:34:51,269 - Typed text into input#username: student3
+2025-09-29 15:34:51,280 - Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='input#password'> is visible after waiting.
+2025-09-29 15:34:51,291 - Typed text into input#password: *********
+2025-09-29 15:34:51,300 - Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='button#submit'> is visible after waiting.
+2025-09-29 15:34:51,379 - Clicked element: button#submit
+2025-09-29 15:34:51,388 - Element div#error is visible after waiting.
