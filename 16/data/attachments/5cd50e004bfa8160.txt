@@ -1,0 +1,14 @@
+[32mINFO    [0m features.utils.log_manager:conftest.py:64 Launching browser...
+[32mINFO    [0m features.utils.log_manager:conftest.py:89 New browser context created
+[32mINFO    [0m features.utils.log_manager:conftest.py:91 New page created in the browser context
+[32mINFO    [0m features.utils.log_manager:base_page.py:42 Navigating to https://practicetestautomation.com/practice-test-login/ (attempt 1/3)
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element input#username is visible after waiting.
+[32mINFO    [0m features.utils.log_manager:base_page.py:47 Successfully loaded https://practicetestautomation.com/practice-test-login/
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='input#username'> is visible after waiting.
+[32mINFO    [0m features.utils.log_manager:base_page.py:148 Typed text into input#username: student
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='input#password'> is visible after waiting.
+[32mINFO    [0m features.utils.log_manager:base_page.py:146 Typed text into input#password: ***********
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element <Locator frame=<Frame name= url='https://practicetestautomation.com/practice-test-login/'> selector='button#submit'> is visible after waiting.
+[32mINFO    [0m features.utils.log_manager:base_page.py:123 Clicked element: button#submit
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element h1.post-title is visible after waiting.
+[32mINFO    [0m features.utils.log_manager:base_page.py:215 Element //a[text()='Log out'] is visible after waiting.
