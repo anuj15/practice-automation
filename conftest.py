@@ -115,13 +115,14 @@ def allure_labels(suite, feature, story, *tags):
     return report_manager.add_labels_to_report(suite, feature, story, *tags)
 
 
-@pytest.hookimpl(tryfirst=True)
+@pytest.hookimpl
 def pytest_bdd_after_step(request, feature, scenario, step, step_func, step_func_args):
     report_manager.intercept_network_calls(request)
-    report_manager.attach_screenshots_on_each_step(request, step)
+    if not bool_is_ci_env or step == scenario.steps[-1]:
+        report_manager.attach_screenshots_on_each_step(request, step)
 
 
-@pytest.hookimpl(tryfirst=True)
+@pytest.hookimpl
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     report_manager.attach_screenshot_on_failure(request, step)
 
